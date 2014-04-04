@@ -11,6 +11,9 @@ Vagrant.configure("2") do |config|
   # using a specific IP.
   config.vm.network :private_network, ip: "192.168.33.10"
 
+  # machine name
+  config.vm.host_name = "couchdb"
+
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
@@ -43,8 +46,8 @@ Vagrant.configure("2") do |config|
                             ]
   end
 
+  # couchdb
   config.vm.define :couchdb do |couchdb_config|
-    couchdb_config.vm.host_name = "couchdb"
     couchdb_config.vm.network :forwarded_port, guest: 5984, host: 5984
   end
 
